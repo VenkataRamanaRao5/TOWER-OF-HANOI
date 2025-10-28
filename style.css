@@ -1,0 +1,28 @@
+body,html{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+h1{
+    color: rgb(240, 28, 28);
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#container{
+    width: 60%;
+    height: 70%;
+    border: solid rgb(24, 149, 232) 5px;
+    display: flex;
+}
+#c1,#c2,#c3{
+    width: 33%;
+    height: 100%;
+}
+#c2,#c3{
+    border-left:dashed orange 4px;
+}
