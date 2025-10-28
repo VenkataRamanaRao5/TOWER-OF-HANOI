@@ -1,10 +1,11 @@
 class Block{
-    constructor(size){
+    constructor(size,n){
         this.size = size
         this.el = document.createElement("div");
         this.el.classList.add("blocks")
         this.el.id = size
         this.el.style.width = `calc(80% - ${size*15}px)`
+        this.el.innerText = n-size;
     }
 }
 
@@ -16,7 +17,7 @@ class Game{
         this.flag = true;
         this.el;
         for(let i=0;i<n;i++){
-            let newBlock = new Block(i);
+            let newBlock = new Block(i,n);
             this.c1Box.appendChild(newBlock.el);
         }
         
@@ -24,16 +25,20 @@ class Game{
         this.c2Box.addEventListener('click',this.gamer.bind(this));
         this.c3Box.addEventListener('click',this.gamer.bind(this));
 
-        this.c1Box.addEventListener('click',this.ghover.bind(this));
-        this.c2Box.addEventListener('click',this.ghover.bind(this));
-        this.c3Box.addEventListener('click',this.ghover.bind(this));
+        // this.c1Box.addEventListener('mouseenter',this.ghover.bind(this));
+        // this.c2Box.addEventListener('mouseenter',this.ghover.bind(this));
+        // this.c3Box.addEventListener('mouseenter',this.ghover.bind(this));
 
     }
-    ghover(){
-        if(!this.flag){
-
-        }
-    }
+    // ghover(event){
+    //     if(!this.flag){
+    //         let boxes = event.currentTarget.querySelectorAll('.blocks');
+    //         let bascontainer = event.currentTarget.top;
+    //         if(boxes.length>0){
+    //             this.el.style.top = boxes[boxes.length-1];
+    //         }
+    //     }
+    // }
     gamer(event){
             if(this.flag){
                 this.flag = false
@@ -52,9 +57,9 @@ class Game{
                     this.el = 0
                     this.flag = true
                 }else if(boxlist.length>0){
-                    console.log(boxlist.length)
-                    console.log(boxlist)
-                    console.log(parseInt(boxlist[boxlist.length-1].id))
+                    // console.log(boxlist.length)
+                    // console.log(boxlist)
+                    // console.log(parseInt(boxlist[boxlist.length-1].id))
                     if(parseInt(boxlist[boxlist.length-1].id)<=parseInt(this.el.id)){
                         groupBoxes.appendChild(this.el)
                         this.el = 0
@@ -65,4 +70,4 @@ class Game{
             }
         }
 }
-let g = new Game(10);
+let g = new Game(4);

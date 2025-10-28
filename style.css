@@ -32,5 +32,10 @@ body{
 .blocks{
     border: solid white 2px;
     height: 25px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(178, 24, 4);
 }
 
