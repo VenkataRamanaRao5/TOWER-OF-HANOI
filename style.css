@@ -22,7 +22,15 @@ body{
 #c1,#c2,#c3{
     width: 33%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
 }
 #c2,#c3{
     border-left:dashed orange 4px;
 }
+.blocks{
+    border: solid white 2px;
+    height: 25px;
+}
+
