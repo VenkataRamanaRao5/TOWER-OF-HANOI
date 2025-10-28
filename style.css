@@ -14,9 +14,9 @@ body{
     flex-direction: column;
 }
 #container{
-    width: 60%;
-    height: 70%;
-    border: solid rgb(24, 149, 232) 5px;
+    width: 40%;
+    height: 50%;
+    border: solid rgb(24, 149, 232) 15px;
     display: flex;
 }
 #c1,#c2,#c3{
@@ -27,7 +27,7 @@ body{
     flex-direction: column-reverse;
 }
 #c2,#c3{
-    border-left:dashed orange 4px;
+    border-left:dashed orange 10px;
 }
 .blocks{
     border: solid white 2px;
@@ -37,5 +37,25 @@ body{
     justify-content: center;
     align-items: center;
     background-color: rgb(178, 24, 4);
+}
+.block-clr{
+    background-color: rebeccapurple;
+    transform: translateY(-20px);
+}
+button {
+    background-color: rgb(121, 124, 126);
+    color: white;
+    border: 0;
+    width: 100px;   
+    height: 50px;  
+    font-size: 28px; 
+    border-radius: 8px; 
+}
+
+footer{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 

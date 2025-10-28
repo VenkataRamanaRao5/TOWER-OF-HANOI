@@ -46,6 +46,7 @@ class Game{
                 if(groupBoxes.length>0){
                     console.log(groupBoxes)
                     this.el = groupBoxes[groupBoxes.length-1];
+                    this.el.classList.add('block-clr');
                 }else{
                     this.flag = true
                 }
@@ -54,6 +55,7 @@ class Game{
                 let boxlist = event.currentTarget.querySelectorAll('.blocks');
                 if(boxlist.length==0){
                     groupBoxes.appendChild(this.el)
+                    this.el.classList.remove('block-clr')
                     this.el = 0
                     this.flag = true
                 }else if(boxlist.length>0){
@@ -62,6 +64,7 @@ class Game{
                     // console.log(parseInt(boxlist[boxlist.length-1].id))
                     if(parseInt(boxlist[boxlist.length-1].id)<=parseInt(this.el.id)){
                         groupBoxes.appendChild(this.el)
+                        this.el.classList.remove('block-clr')
                         this.el = 0
                         this.flag = true
                     }
@@ -70,4 +73,5 @@ class Game{
             }
         }
 }
-let g = new Game(4);
+
+let g = new Game(10);
