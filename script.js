@@ -54,13 +54,17 @@ class Game{
                     this.flag = true
                 }
             }else{
+                /*
+                My my who thought a single line from target--->currentTarget have such a beautiful 
+                change .This just solved so many problem!
+                */
                 let groupBoxes = event.currentTarget;
                 let boxlist = event.currentTarget.querySelectorAll('.blocks');
                 if(boxlist.length==0){
                     groupBoxes.appendChild(this.el)
                     this.el.classList.remove('block-clr')
                     this.count+=1
-                    document.getElementById('score').innerHTML=`Score: ${this.count}`
+                    document.getElementById('score').innerHTML=`MOVES: ${this.count}`
                     this.el = 0
                     this.flag = true
                 }else if(boxlist.length>0){
@@ -71,7 +75,7 @@ class Game{
                         groupBoxes.appendChild(this.el)
                         this.el.classList.remove('block-clr')
                         this.count+=1
-                        document.getElementById('score').innerHTML=`Score: ${this.count}`
+                        document.getElementById('score').innerHTML=`MOVES: ${this.count}`
                         this.el = 0
                         this.flag = true
                     }
@@ -108,9 +112,7 @@ document.getElementById('start').addEventListener('click',()=>{
     document.getElementById('restart').style.display='block'
     document.getElementById('c2').classList.remove('hori');
     // document.getElementById('levelChanger').remove();
-    document.getElementById('left').style.display='None'
-    document.getElementById('right').style.display='None'
-    document.getElementById('theValue').style.display='None'
+    document.getElementById('c2').innerHTML=''
 }
 );
 //g.gameStart()
