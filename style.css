@@ -45,7 +45,7 @@ body{
     background-color: rebeccapurple;
     transform: translateY(-20px);
 }
-button {
+#start,#restart {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: rgb(121, 124, 126);
     color: white;
@@ -68,4 +68,20 @@ footer{
     display: flex;
     justify-content: end;
 }
-
+#restart{
+    display: None;
+}
+#start,#restart{
+    margin-right: 30px;
+}
+.hori{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row !important;
+}
+#theValue{
+    color: azure;
+    margin: 3px;
+    size: 5pxNone;
+}

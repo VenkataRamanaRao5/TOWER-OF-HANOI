@@ -79,12 +79,37 @@ class Game{
             }
         }
 }
+document.getElementById('c2').classList.add('hori');
 document.getElementById('restart').addEventListener('click',()=>window.location.reload());
-let g = new Game(10);
+
+let count = 3;
+let g = new Game(count);
+document.getElementById('theValue').innerText = count;
+document.getElementById('left').addEventListener('click',()=>{
+    if(count>3){
+        count-=1
+        document.getElementById('c1').innerHTML=''
+        g = new Game(count);
+        document.getElementById('theValue').innerText = count;
+    }
+})
+document.getElementById('right').addEventListener('click',()=>{
+    if(count<9){
+        count+=1
+        document.getElementById('c1').innerHTML=''
+        g = new Game(count);
+        document.getElementById('theValue').innerText = count;
+    }
+})
 document.getElementById('start').addEventListener('click',()=>{
     g.gameStart()
     document.getElementById('start').remove();
-    document.getElementById('levelChanger').remove();
+    document.getElementById('restart').style.display='block'
+    document.getElementById('c2').classList.remove('hori');
+    // document.getElementById('levelChanger').remove();
+    document.getElementById('left').style.display='None'
+    document.getElementById('right').style.display='None'
+    document.getElementById('theValue').style.display='None'
 }
 );
 //g.gameStart()
