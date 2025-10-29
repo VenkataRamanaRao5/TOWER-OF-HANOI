@@ -11,6 +11,7 @@ class Block{
 
 class Game{
     constructor(n){
+        this.count = 0
         this.c1Box = document.getElementById("c1");
         this.c2Box = document.getElementById("c2");
         this.c3Box = document.getElementById("c3");
@@ -21,10 +22,6 @@ class Game{
             this.c1Box.appendChild(newBlock.el);
         }
         
-        this.c1Box.addEventListener('click',this.gamer.bind(this));
-        this.c2Box.addEventListener('click',this.gamer.bind(this));
-        this.c3Box.addEventListener('click',this.gamer.bind(this));
-
         // this.c1Box.addEventListener('mouseenter',this.ghover.bind(this));
         // this.c2Box.addEventListener('mouseenter',this.ghover.bind(this));
         // this.c3Box.addEventListener('mouseenter',this.ghover.bind(this));
@@ -39,6 +36,11 @@ class Game{
     //         }
     //     }
     // }
+    gameStart(){
+        this.c1Box.addEventListener('click',this.gamer.bind(this));
+        this.c2Box.addEventListener('click',this.gamer.bind(this));
+        this.c3Box.addEventListener('click',this.gamer.bind(this));
+    }
     gamer(event){
             if(this.flag){
                 this.flag = false
@@ -56,6 +58,8 @@ class Game{
                 if(boxlist.length==0){
                     groupBoxes.appendChild(this.el)
                     this.el.classList.remove('block-clr')
+                    this.count+=1
+                    document.getElementById('score').innerHTML=`Score: ${this.count}`
                     this.el = 0
                     this.flag = true
                 }else if(boxlist.length>0){
@@ -65,6 +69,8 @@ class Game{
                     if(parseInt(boxlist[boxlist.length-1].id)<=parseInt(this.el.id)){
                         groupBoxes.appendChild(this.el)
                         this.el.classList.remove('block-clr')
+                        this.count+=1
+                        document.getElementById('score').innerHTML=`Score: ${this.count}`
                         this.el = 0
                         this.flag = true
                     }
@@ -73,5 +79,12 @@ class Game{
             }
         }
 }
-
+document.getElementById('restart').addEventListener('click',()=>window.location.reload());
 let g = new Game(10);
+document.getElementById('start').addEventListener('click',()=>{
+    g.gameStart()
+    document.getElementById('start').remove();
+    document.getElementById('levelChanger').remove();
+}
+);
+//g.gameStart()
