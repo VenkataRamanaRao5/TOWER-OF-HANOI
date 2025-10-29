@@ -42,6 +42,7 @@ class Game{
         this.c3Box.addEventListener('click',this.gamer.bind(this));
     }
     gamer(event){
+        // if(event.target.classList.contains('blocks')){}
             if(this.flag){
                 this.flag = false
                 let groupBoxes = event.currentTarget.querySelectorAll(".blocks");
@@ -53,7 +54,7 @@ class Game{
                     this.flag = true
                 }
             }else{
-                let groupBoxes = event.target;
+                let groupBoxes = event.currentTarget;
                 let boxlist = event.currentTarget.querySelectorAll('.blocks');
                 if(boxlist.length==0){
                     groupBoxes.appendChild(this.el)
