@@ -16,6 +16,7 @@ class Game{
         this.c2Box = document.getElementById("c2");
         this.c3Box = document.getElementById("c3");
         this.flag = true;
+        this.n = n
         this.el;
         for(let i=0;i<n;i++){
             let newBlock = new Block(i,n);
@@ -37,9 +38,40 @@ class Game{
     //     }
     // }
     gameStart(){
-        this.c1Box.addEventListener('click',this.gamer.bind(this));
-        this.c2Box.addEventListener('click',this.gamer.bind(this));
-        this.c3Box.addEventListener('click',this.gamer.bind(this));
+        this.boundGamer = this.gamer.bind(this);
+        this.c1Box.addEventListener('click', this.boundGamer);
+        this.c2Box.addEventListener('click', this.boundGamer);
+        this.c3Box.addEventListener('click', this.boundGamer);
+    }
+    /*
+    parseInt crisis is real,gave me a lot of trouble!
+    */
+    isGameOver(grid){
+        //console.log('game over',grid.id,grid)
+        if(grid.id==="c1")return false
+        let b = grid.querySelectorAll('.blocks')
+        //console.log('mymy:',b);
+        if(b.length===this.n){
+            for(let i=0;i<this.n;i++){
+                if(parseInt(b[i].id)!==i)return false;
+            }
+            return true;
+            //return false
+        }else{
+            return false
+        }
+    }
+
+    makeGameOver(){
+        this.c1Box.removeEventListener('click', this.boundGamer);
+        this.c2Box.removeEventListener('click', this.boundGamer);
+        this.c3Box.removeEventListener('click', this.boundGamer);
+        this.c2Box.classList.add('endGame');
+        this.c2Box.innerHTML = `
+        <div id="won"> You won !! </div>
+        <div> Your score: ${this.count}</div>
+        <div> Perfect score: ${2**this.n-1}</div>
+        `
     }
     gamer(event){
         // if(event.target.classList.contains('blocks')){}
@@ -47,7 +79,7 @@ class Game{
                 this.flag = false
                 let groupBoxes = event.currentTarget.querySelectorAll(".blocks");
                 if(groupBoxes.length>0){
-                    console.log(groupBoxes)
+                    //console.log(groupBoxes)
                     this.el = groupBoxes[groupBoxes.length-1];
                     this.el.classList.add('block-clr');
                 }else{
@@ -67,6 +99,11 @@ class Game{
                     document.getElementById('score').innerHTML=`MOVES: ${this.count}`
                     this.el = 0
                     this.flag = true
+
+                    /*This won't work,unneccessary code but don't remove it!*/
+                    if(this.isGameOver(groupBoxes)){
+                        this.makeGameOver();
+                    }
                 }else if(boxlist.length>0){
                     // console.log(boxlist.length)
                     // console.log(boxlist)
@@ -78,6 +115,11 @@ class Game{
                         document.getElementById('score').innerHTML=`MOVES: ${this.count}`
                         this.el = 0
                         this.flag = true
+
+                        if(this.isGameOver(groupBoxes)){
+                            //console.log('Game mudnchu!')
+                            this.makeGameOver();
+                        }
                     }
                 }
                 
