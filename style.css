@@ -8,7 +8,6 @@ body,html{
 .name{
     color: rgb(240, 28, 28);
     font-weight: bolder;
-    font-size: 80px
 }
 body{
     display: flex;
@@ -20,6 +19,7 @@ body{
     #container{
         width: 45%;
     }
+    
 }
 @media (600px <= width < 800px) {
     #container{
@@ -30,14 +30,31 @@ body{
     #container{
         width: 80%;
     }
+    #mid {
+        margin-top: 0 !important;
+        height: auto !important;
+    }
 }
 @media (width < 400px) {
     #container{
-        width: 95%;
+        width: 87%;
         border-width: 5px !important;
+    }
+    #mid {
+        margin-top: 0 !important;
+        height: auto !important;
     }
 }
 
+.name {
+    font-size: calc(5vw + 15px);
+}
+#theValue, #left, #right {
+    font-size: calc(4.2vw + 10px);
+}
+.forClr {
+    font-size: calc(2.5vw + 10px);
+}
 
 #container{
     height: 50%;
@@ -113,7 +130,6 @@ footer{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: white;
     height: 10%;
-    font-size: 40px; 
     display: flex;
     width: 100%;
     justify-content: center;
@@ -125,7 +141,6 @@ footer{
 #theValue{
     color: azure;
     margin: 3px;
-    font-size: 70px;
     color: tomato;
 }
 #mid{
@@ -136,7 +151,6 @@ footer{
 }
 #left,#right{
     height: 100%;
-    font-size: 70px;
     color: tomato;
     background-color: black;
     border: none;
